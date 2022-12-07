@@ -1,4 +1,4 @@
-# kriptoloji-odev
+# Vuejs vigenere cypher using php rest api 
 
 ## Project setup
 ```
