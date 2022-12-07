@@ -51,7 +51,7 @@ export default {
   },
   methods:{
     encrypt:function (){
-     this.axios.get('http://localhost/kriptoloji/encrypt.php?text='+this.text.split(" ").join("")+'&cipher='+this.cipher+'&type=encrypt').then(response=>(this.data =response.data)).catch(function (error){
+     this.axios.get('http://ahmetvuruskan.com.tr/api/api.php?text='+this.text.split(" ").join("")+'&cipher='+this.cipher+'&type=encrypt').then(response=>(this.data =response.data)).catch(function (error){
        console.log(error)
      })
     },
