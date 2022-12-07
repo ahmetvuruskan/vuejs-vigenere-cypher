@@ -9,7 +9,7 @@
           <div class="card-body">
             <div class="form-group">
               <label >Şifre çözmek istediğiniz metin</label>
-              <input type="text"  :value="decryptKey" class="form-control" maxlength="16" placeholder="Lütfen Metni Giriniz">
+              <input type="text" v-model="text" class="form-control" maxlength="16" placeholder="Lütfen Metni Giriniz">
             </div>
             <div class="form-group mt-3">
               <button @click="decrypt()"  class=" form-control btn btn-outline-primary">Şifre Çöz</button>
@@ -24,10 +24,12 @@
           </div>
           <div class="card-body">
             <h6>Şifresini çözmek istedğiniz metin</h6>
-            <p >{{ decryptText }}</p>
-            <div v-if="data.encrypted">
-              <h6>Şifrelenen Metin</h6>
-              <p  style="color: red">{{data.encrypted}}</p>
+            <p >{{ text }}</p>
+            <h6>Şifrenin çözülmesi için kullanılan ara metin</h6>
+            <p  style="color: blue">{{data.subText ? data.subText : "Ara Metin.."}}</p>
+            <div v-if="data.decrypted">
+              <h6>Şifresi Çözülmüş Metin</h6>
+              <p  style="color: red">{{data.decrypted}}</p>
             </div>
           </div>
         </div>
@@ -41,15 +43,14 @@ export default {
   name: "EncryptData",
   data: () => {
     return {
-      decryptText: null,
+      text: null,
       cipher :"cipher",
       data :{}
     }
   },
-  props :['decryptKey'],
   methods:{
     decrypt:function (){
-      this.axios.get('http://localhost/kriptoloji/encrypt.php?text='+this.text.split(" ").join("")+'&cipher='+this.cipher+'&type=decrypt').then(response=>(this.data =response.data)).catch(function (error){
+      this.axios.get('http://localhost/kriptoloji/encrypt.php?text='+this.text+'&cipher='+this.cipher+'&type=decrypt').then(response =>(this.data =response.data)).catch(function (error){
         console.log(error)
       })
     }

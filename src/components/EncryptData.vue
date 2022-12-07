@@ -31,7 +31,6 @@
             <div v-if="data.encrypted">
               <h6>Şifrelenen Metin</h6>
               <p  style="color: red">{{data.encrypted}}</p>
-              <button @click="emitData()" >Şifre Çöz</button>
             </div>
           </div>
         </div>
@@ -40,12 +39,12 @@
   </div>
 </template>
 <script>
-import {eventBus} from "vue";
+
 export default {
   name: "EncryptData",
   data: () => {
     return {
-      text: null,
+      text: "thisishomework",
       cipher :"cipher",
       data :{}
     }
@@ -56,10 +55,7 @@ export default {
        console.log(error)
      })
     },
-    emitData:function (){
-      this.$refs.decryptButton.$el.click()
-      eventBus.$emit("decryptKey",this.data.encrypted);
-    }
+
   }
 }
 </script>
