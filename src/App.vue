@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<IndexComponent></IndexComponent>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import IndexComponent from "@/components/IndexComponent";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // eslint-disable-next-line vue/no-unused-components
+    IndexComponent
   }
 }
 </script>
