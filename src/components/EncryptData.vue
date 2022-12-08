@@ -39,8 +39,8 @@
   </div>
 </template>
 <script>
-
 export default {
+
   name: "EncryptData",
   data: () => {
     return {
@@ -52,7 +52,11 @@ export default {
   methods:{
     encrypt:function (){
      this.axios.get('http://ahmetvuruskan.com.tr/api/api.php?text='+this.text.split(" ").join("")+'&cipher='+this.cipher+'&type=encrypt').then(response=>(this.data =response.data)).catch(function (error){
-       console.log(error)
+       this.Swal.fire(
+           'ERROR',
+           error.data,
+           'error'
+       );
      })
     },
 

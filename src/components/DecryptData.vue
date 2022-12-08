@@ -43,7 +43,7 @@ export default {
   name: "EncryptData",
   data: () => {
     return {
-      text: null,
+      text: "vqbyljgsxoaruwdi",
       cipher :"cipher",
       data :{}
     }
@@ -51,7 +51,11 @@ export default {
   methods:{
     decrypt:function (){
       this.axios.get('http://ahmetvuruskan.com.tr/api/api.php?text='+this.text+'&cipher='+this.cipher+'&type=decrypt').then(response =>(this.data =response.data)).catch(function (error){
-        console.log(error)
+        this.Swal.fire(
+            'ERROR',
+            error.data,
+            'error'
+        );
       })
     }
   }
